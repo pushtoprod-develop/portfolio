@@ -1,3 +1,5 @@
+import { useState } from "react";
+
 const NAME = "PushToProd";
 const EMAIL = "pushtoprod.develop@gmail.com";
 
@@ -43,13 +45,24 @@ function Project({ title, variant, heading, text, tags }) {
 }
 
 export default function App() {
+  const [open, setOpen] = useState(false);
+
   return (
     <div className="wrap">
       <header>
         <strong>{NAME}</strong>
-        <nav aria-label="Main">
+        <button
+          className="menu-btn"
+          aria-label="Open menu"
+          aria-expanded={open}
+          aria-controls="mainNav"
+          onClick={() => setOpen((o) => !o)}
+        >
+          <span></span><span></span><span></span>
+        </button>
+        <nav aria-label="Main" id="mainNav" className={open ? "open" : ""}>
           {NAV.map((n) => (
-            <a key={n.href} href={n.href}>{n.label}</a>
+            <a key={n.href} href={n.href} onClick={() => setOpen(false)}>{n.label}</a>
           ))}
         </nav>
       </header>

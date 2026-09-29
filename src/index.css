@@ -46,6 +46,19 @@ h2{font-family:"Unbounded",sans-serif;font-size:1.7rem;letter-spacing:-.03em;mar
 .contact a.mail{font-family:"Unbounded",sans-serif;font-size:clamp(1rem,3.4vw,1.7rem);font-weight:700;letter-spacing:-.04em;text-decoration:none;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;word-break:break-word}
 footer{padding:2rem 0;color:var(--muted);font-size:.95rem;display:flex;justify-content:center;text-align:center;flex-wrap:wrap;gap:1rem;border-top:1px solid var(--edge)}
 .links a{margin-right:1.2rem;font-weight:600}
-@media (max-width:700px){.project,.about{grid-template-columns:1fr}.project:nth-of-type(even) .thumb{order:0}}
+@media (max-width:700px){.wrap{padding:0 1rem;width:100%}.project,.about{grid-template-columns:1fr}.project:nth-of-type(even) .thumb{order:0}}
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}h1,.hero p,.btn{animation:none}.project,.btn{transition:none}}
 a,.btn,.project,nav a,header strong,.skills li,button{cursor:pointer}
+.menu-btn{display:none;flex-direction:column;justify-content:center;gap:5px;width:2.6rem;height:2.6rem;border:1px solid var(--edge);border-radius:99px;background:var(--glass);backdrop-filter:blur(12px);padding:0;align-items:center}
+.menu-btn span{display:block;width:1.1rem;height:2px;background:var(--ink);border-radius:2px;transition:transform .25s,opacity .25s}
+.menu-btn[aria-expanded="true"] span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.menu-btn[aria-expanded="true"] span:nth-child(2){opacity:0}
+.menu-btn[aria-expanded="true"] span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+@media (max-width:420px){
+  .menu-btn{display:flex}
+  header{position:relative}
+  nav#mainNav{position:absolute;top:4.2rem;right:1rem;left:1rem;display:flex;flex-direction:column;gap:.25rem;padding:.6rem;border-radius:1rem;background:var(--glass);border:1px solid var(--edge);backdrop-filter:blur(16px);opacity:0;pointer-events:none;transform:translateY(-8px);transition:opacity .2s,transform .2s;z-index:20}
+  nav#mainNav.open{opacity:1;pointer-events:auto;transform:none}
+  nav#mainNav a{padding:.7rem 1rem;border-radius:.7rem;text-align:center}
+}
+
